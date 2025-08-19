@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <title>AgricultureWala - Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url("{% static 'images/home.jpg' %}");
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh; /* FULL HEIGHT */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        header {
+            padding: 20px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            font-size: 32px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        nav {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 12px 24px;
+            background-color: #ffc107;
+            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background-color: #ff9800;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        🌾 Welcome to AgricultureWala
+    </header>
+    <nav>
+        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'login' %}">Login</a>
+    </nav>
+</body>
+</html>

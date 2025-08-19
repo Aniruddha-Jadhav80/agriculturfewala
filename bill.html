@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #000;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #666;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Bill for {{ user.username }}</h2>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>₹{{ product.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p class="total">Total: ₹{{ total }}</p>
+    </div>
+</body>
+</html>

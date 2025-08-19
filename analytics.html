@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            animation: slidebg 10s infinite alternate;
+        }
+        @keyframes slidebg {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .container {
+            max-width: 700px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h2 {
+            color: #ff6600;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Live Cart Data Analytics</h2>
+        <canvas id="cartChart" width="400" height="400"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('cartChart').getContext('2d');
+        const cartChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: {{ product_names|safe }},
+                datasets: [{
+                    label: 'Cart Items',
+                    data: {{ product_quantities|safe }},
+                    backgroundColor: [
+                        '#4CAF50', '#FF9800', '#2196F3', '#E91E63', '#9C27B0',
+                        '#FF5722', '#00BCD4', '#8BC34A', '#FFEB3B', '#795548'
+                    ],
+                    borderWidth: 2
+                }]
+           },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Product Quantity in Cart'
+                    }
+                }
+            }
+        });
+    
+    </script>
+</body>
+</html>
